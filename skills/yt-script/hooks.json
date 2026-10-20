@@ -1,0 +1,435 @@
+{
+ "version": "1.0-ko",
+ "note": "21 hook formulas for YouTube. A YouTube hook is the first 15 seconds and it does three jobs: confirm the click the title promised, raise a question the viewer cannot close, and prove the payoff exists. A hook that only does the third is a summary and it leaks. Every formula here carries the shape, a worked example, the failure mode, and the patterns hookscore.py classifies transcribed speech against.",
+ "rules": [
+  "Confirm the title in the first sentence. A hook that ignores its own title is why people leave at 0:08.",
+  "One idea. A hook carrying two promises keeps neither.",
+  "Specific beats big. '400 to 200,000 in seven months' outperforms 'massive growth'.",
+  "Show the artifact inside 20 seconds if you promised one.",
+  "Never open with who you are. The subscribe pitch has not been earned yet."
+ ],
+ "hooks": [
+  {
+   "id": "the-statistic",
+   "name": "The Statistic",
+   "shape": "A number the viewer did not know, stated flat, then the consequence.",
+   "example": "97% of the people who start a channel quit before video 30. Here is what the other 3% do differently.",
+   "fails_when": "Dies if the number is vague or unverifiable. Say the source out loud.",
+   "match": [
+    "\\b\\d+(\\.\\d+)?\\s?%",
+    "\\b\\d+ (out of|in) \\d+\\b",
+    "\\b\\d{2,}(,\\d{3})+\\b",
+    "\\d+(\\.\\d+)?\\s?%",
+    "\\d+\\s?명\\s?중\\s?\\d+",
+    "열\\s?명\\s?중",
+    "(백|천)\\s?명\\s?중",
+    "\\d+\\s?(배|만|억)"
+   ],
+   "name_ko": "통계 한 방",
+   "shape_ko": "시청자가 몰랐던 숫자를 담담하게 던지고, 그 결과를 말한다.",
+   "example_ko": "유튜브 시작한 사람 열 명 중 아홉은 30번째 영상 전에 그만둬요. 남은 한 명이 다르게 한 건 이거예요.",
+   "fails_when_ko": "숫자가 흐릿하거나 출처를 못 대면 바로 죽는다. 출처를 말로 밝힌다."
+  },
+  {
+   "id": "someone-elses-result",
+   "name": "Someone Else's Result",
+   "shape": "A named person's outcome, then the mechanism.",
+   "example": "This channel went from 400 subscribers to 200,000 in seven months on one format. I mapped it.",
+   "fails_when": "Do not invent the number. If you cannot name the channel, use a different formula.",
+   "match": [
+    "\\bthis (channel|guy|creator|account)\\b",
+    "\\bwent from .* to\\b",
+    "\\bin (a|one|two|three|\\d+) (week|month|year)s?\\b",
+    "이\\s?(채널|사람|유튜버|계정|분)(은|이|는)",
+    "\\d+\\s?(명|만)?에서\\s?\\d+",
+    "만에\\s?\\d+"
+   ],
+   "name_ko": "남의 결과",
+   "shape_ko": "실명(채널명)의 결과를 먼저, 그다음 방법.",
+   "example_ko": "이 채널은 구독자 400명에서 7개월 만에 20만이 됐어요. 형식 하나로요. 그걸 뜯어봤어요.",
+   "fails_when_ko": "숫자를 지어내지 않는다. 채널 이름을 못 대면 다른 공식을 쓴다."
+  },
+  {
+   "id": "the-mistake",
+   "name": "The Mistake",
+   "shape": "Name the error the viewer is probably making right now.",
+   "example": "Your first 30 seconds are why nobody finishes your videos. It is not the topic.",
+   "fails_when": "Only works if the mistake is common and the viewer can check it in one second.",
+   "match": [
+    "\\byou('re| are) (probably |still )?(doing|making)\\b",
+    "\\bthe (mistake|reason) (everyone|most people|nobody)\\b",
+    "\\bstop (doing )?\\b",
+    "(하고|쓰고)\\s?(계시|있)(죠|지|다면|나요)",
+    "실수",
+    "(때문에|탓에)\\s?(아무도|안\\s?봐|망)",
+    "잘못\\s?(하고|쓰고|알고)"
+   ],
+   "name_ko": "지금 하는 실수",
+   "shape_ko": "시청자가 지금 하고 있을 법한 실수를 짚는다.",
+   "example_ko": "영상 첫 30초 때문에 아무도 끝까지 안 봐요. 주제 문제가 아니에요.",
+   "fails_when_ko": "흔한 실수이고, 시청자가 1초 만에 확인할 수 있을 때만 통한다."
+  },
+  {
+   "id": "contrarian-flip",
+   "name": "Contrarian Flip",
+   "shape": "State the accepted advice, then reject it.",
+   "example": "Everyone says post daily. I posted once a week for a year and tripled the channel.",
+   "fails_when": "Needs evidence in the next 15 seconds or it reads as contrarian for its own sake.",
+   "match": [
+    "\\beveryone (says|thinks|tells you)\\b",
+    "\\bis (actually )?wrong\\b",
+    "\\bnobody (tells|talks about)\\b",
+    "(다들|모두|남들|사람들)(이)?\\s?(말하|하라|그러|알려)",
+    "(틀렸|아니에요|거짓말|반대로)",
+    "아무도\\s?(안\\s?)?(알려|말해)",
+    "(다들|모두|남들|사람들)\\s.*(라고|하죠|하잖아|하던데)"
+   ],
+   "name_ko": "통념 뒤집기",
+   "shape_ko": "다들 하는 조언을 말하고, 그걸 뒤집는다.",
+   "example_ko": "다들 매일 올리라고 하죠. 저는 일주일에 한 번만 올렸는데 채널이 세 배가 됐어요.",
+   "fails_when_ko": "15초 안에 근거가 없으면 일부러 반대하는 사람처럼 들린다."
+  },
+  {
+   "id": "the-reveal",
+   "name": "The Reveal",
+   "shape": "Promise a specific thing will be shown, then show it.",
+   "example": "I am going to show you the exact prompt, on screen, that wrote this video.",
+   "fails_when": "You have to actually show it, early. A reveal at 8:00 is a retention cliff at 1:00.",
+   "match": [
+    "\\bI('m| am) going to show you\\b",
+    "\\bhere('s| is) (the|exactly)\\b",
+    "\\bon screen\\b",
+    "보여\\s?(드릴|줄)게",
+    "(그대로|전부|통째로)\\s?(공개|보여)",
+    "화면에"
+   ],
+   "name_ko": "공개 예고",
+   "shape_ko": "특정한 걸 보여주겠다고 약속하고, 실제로 보여준다.",
+   "example_ko": "이 영상 대본을 쓴 프롬프트, 화면에 그대로 보여드릴게요.",
+   "fails_when_ko": "반드시 일찍 보여준다. 8분에 공개하면 1분에 이탈한다."
+  },
+  {
+   "id": "the-superlative",
+   "name": "The Superlative",
+   "shape": "The single best/worst/fastest of a category.",
+   "example": "This is the fastest way to turn one long video into thirty Shorts.",
+   "fails_when": "Superlatives are cheap. Earn it by naming what it beat.",
+   "match": [
+    "\\bthe (best|worst|fastest|easiest|only)\\b",
+    "\\bnumber one\\b",
+    "가장\\s?(빠른|쉬운|좋은|싼|확실한|많이)",
+    "(유일한|1위|최고의|제일)",
+    "넘버\\s?원"
+   ],
+   "name_ko": "최상급",
+   "shape_ko": "한 분야에서 가장 빠른·쉬운·유일한 것.",
+   "example_ko": "긴 영상 하나로 쇼츠 서른 개 뽑는 가장 빠른 방법이에요.",
+   "fails_when_ko": "최상급은 싸다. 무엇을 이겼는지 말해서 증명한다."
+  },
+  {
+   "id": "the-clock",
+   "name": "The Clock",
+   "shape": "Bound the payoff in time.",
+   "example": "In the next six minutes you will have a working title, thumbnail and script for your next video.",
+   "fails_when": "The clock has to be true. Overrun it and the next video's hook is not believed.",
+   "match": [
+    "\\bin (the next )?\\d+ (seconds|minutes|hours)\\b",
+    "\\bby the end of this video\\b",
+    "\\bunder \\d+\\b",
+    "\\d+\\s?(초|분|시간)\\s?(안에|만에|이면|컷)",
+    "이\\s?영상\\s?끝(날|나기)",
+    "(딸깍|한\\s?번)에"
+   ],
+   "name_ko": "시간 제한",
+   "shape_ko": "얻는 것을 시간으로 묶는다.",
+   "example_ko": "앞으로 6분 안에 다음 영상 제목, 썸네일, 대본이 다 나와요.",
+   "fails_when_ko": "시간 약속은 지켜야 한다. 넘기면 다음 영상 후킹을 안 믿는다."
+  },
+  {
+   "id": "i-tried-it",
+   "name": "I Tried It",
+   "shape": "First-person experiment with a stated cost.",
+   "example": "I let an AI run my channel for 30 days. I did not touch the uploads.",
+   "fails_when": "Needs a real cost - time, money, risk - or there is no stake.",
+   "match": [
+    "\\bI (tried|spent|tested|let|gave)\\b",
+    "\\bfor \\d+ (days|weeks|months)\\b",
+    "\\bso you don'?t have to\\b",
+    "(해봤|써봤|맡겨봤|시켜봤|돌려봤|테스트해)",
+    "\\d+\\s?(일|주|달|개월)\\s?동안",
+    "대신\\s?해봤"
+   ],
+   "name_ko": "직접 해봤다",
+   "shape_ko": "대가가 걸린 1인칭 실험.",
+   "example_ko": "AI한테 채널을 30일 동안 맡겨봤어요. 업로드는 손도 안 댔어요.",
+   "fails_when_ko": "시간·돈·위험 같은 진짜 대가가 없으면 긴장감이 없다."
+  },
+  {
+   "id": "the-question",
+   "name": "The Question",
+   "shape": "Ask the exact question the viewer typed into search.",
+   "example": "Why do your videos die at 30 seconds when the topic is fine?",
+   "fails_when": "Must be the viewer's question, not yours. Pull it from your own comments.",
+   "match": [
+    "^(why|how|what|when|should|can|do|does|is)\\b",
+    "\\?\\s*$",
+    "^(왜|어떻게|뭐|무엇|언제|어디|혹시)",
+    "\\?\\s*$",
+    "(나요|까요|ㄹ까|을까|일까)\\s*\\??\\s*$"
+   ],
+   "name_ko": "검색창 질문",
+   "shape_ko": "시청자가 검색창에 친 질문을 그대로 묻는다.",
+   "example_ko": "주제는 괜찮은데 왜 내 영상은 30초에서 다 나갈까요?",
+   "fails_when_ko": "내 질문이 아니라 시청자 질문이어야 한다. 내 댓글에서 가져온다."
+  },
+  {
+   "id": "the-before-after",
+   "name": "Before and After",
+   "shape": "Two states, one cut between them.",
+   "example": "This was my thumbnail. This is my thumbnail now. Same video, four times the click-through.",
+   "fails_when": "Only works with a visual. Do not use it on a talking-head-only video.",
+   "match": [
+    "\\bbefore\\b.*\\bafter\\b",
+    "\\bthis was\\b.*\\bthis is\\b",
+    "\\bused to\\b",
+    "(전|예전|원래)(에는|엔|은)?.*(후|지금|이제)",
+    "바꾸기\\s?전",
+    "비포|애프터"
+   ],
+   "name_ko": "전과 후",
+   "shape_ko": "두 상태를 컷 하나로 나눈다.",
+   "example_ko": "이게 제 예전 썸네일이에요. 이게 지금이고요. 같은 영상인데 클릭률이 네 배예요.",
+   "fails_when_ko": "화면으로 보여줄 게 있어야 한다. 얼굴만 나오는 영상엔 쓰지 않는다."
+  },
+  {
+   "id": "the-teardown",
+   "name": "The Teardown",
+   "shape": "Take a real thing apart in public.",
+   "example": "I pulled the nine most-viewed AI videos of the month and broke down what the titles share.",
+   "fails_when": "Name what you pulled and how many. A teardown of one example is an anecdote.",
+   "match": [
+    "\\b(broke|break|breaking) (it )?down\\b",
+    "\\bteardown\\b",
+    "\\banalys(ed|ed|is|e)\\b",
+    "\\bI pulled\\b",
+    "(뜯어|해체|분석)(봤|해|했)",
+    "\\d+\\s?개를?\\s?(모아|모았|골라)",
+    "공통점"
+   ],
+   "name_ko": "해체 분석",
+   "shape_ko": "실제 사례를 공개적으로 뜯어본다.",
+   "example_ko": "이번 달 조회수 1등 AI 영상 아홉 개를 모아서 제목의 공통점을 뜯어봤어요.",
+   "fails_when_ko": "몇 개를 어디서 모았는지 말한다. 하나만 뜯으면 그냥 일화다."
+  },
+  {
+   "id": "the-stack",
+   "name": "The Stack",
+   "shape": "Two named tools combined into one outcome.",
+   "example": "Claude plus your YouTube Studio export gives you next week's upload schedule in one prompt.",
+   "fails_when": "Both tools must be nameable and the outcome must need both.",
+   "match": [
+    "\\b\\w+ (plus|\\+) \\w+\\b",
+    "\\bcombine\\b",
+    "\\btogether\\b",
+    "\\S+\\s?(\\+|플러스)\\s?\\S+",
+    "(합치|조합|연결|붙이)",
+    "(이랑|하고)\\s?\\S+\\s?(같이|함께)",
+    "(만|을|를)\\s?(넣으면|붙이면|연결하면|합치면)"
+   ],
+   "name_ko": "조합",
+   "shape_ko": "이름 있는 도구 두 개를 합쳐 결과 하나.",
+   "example_ko": "클로드에 유튜브 스튜디오 파일만 넣으면 다음 주 업로드 일정이 한 번에 나와요.",
+   "fails_when_ko": "두 도구 모두 이름이 있어야 하고, 둘 다 있어야만 되는 결과여야 한다."
+  },
+  {
+   "id": "the-warning",
+   "name": "The Warning",
+   "shape": "A cost the viewer is about to pay.",
+   "example": "Do not upload another video until you check this one setting.",
+   "fails_when": "If the cost is small the hook is a lie. Reserve it.",
+   "match": [
+    "\\bdo not\\b",
+    "\\bdon'?t (upload|post|publish|start)\\b",
+    "\\bbefore you\\b",
+    "\\bstop\\b",
+    "(하지|올리지|쓰지|시작하지)\\s?마세요",
+    "(절대|당장)\\s?(하지|멈추|그만)",
+    "(전에|전엔)\\s?(꼭|먼저)",
+    "(안\\s?하면|모르면)\\s?(손해|망|큰일)"
+   ],
+   "name_ko": "경고",
+   "shape_ko": "시청자가 곧 치를 대가.",
+   "example_ko": "이 설정 하나 확인하기 전엔 영상 올리지 마세요.",
+   "fails_when_ko": "대가가 작으면 거짓말이 된다. 아껴 쓴다."
+  },
+  {
+   "id": "the-list",
+   "name": "The List",
+   "shape": "A counted set, with the count in the first line.",
+   "example": "Seven things I would do differently if I started a channel in 2026.",
+   "fails_when": "The count must be exact and every item must be different in kind.",
+   "match": [
+    "^\\d+ \\w+",
+    "\\b(here are|these are) \\d+\\b",
+    "^\\d+\\s?(가지|개|단계|위)",
+    "(가지|개)\\s?(정리|알려|공개)",
+    "TOP\\s?\\d+",
+    "(첫째|1위)",
+    "(한|두|세|네|다섯|여섯|일곱|여덟|아홉|열)\\s?가지"
+   ],
+   "name_ko": "숫자 목록",
+   "shape_ko": "첫 줄에 개수를 박은 목록.",
+   "example_ko": "2026년에 채널을 다시 시작한다면 다르게 할 일곱 가지.",
+   "fails_when_ko": "개수는 정확해야 하고, 항목끼리 종류가 달라야 한다."
+  },
+  {
+   "id": "the-receipt",
+   "name": "The Receipt",
+   "shape": "Show the artifact first, explain second.",
+   "example": "This is the analytics page. This video did 40% of the channel's watch time. Here is why.",
+   "fails_when": "Requires a real screenshot. A described receipt is not a receipt.",
+   "match": [
+    "\\bthis is (the|my)\\b",
+    "\\bscreenshot\\b",
+    "\\bproof\\b",
+    "\\breceipts?\\b",
+    "이게\\s?(제|저의|실제)",
+    "(캡처|인증|증거|실제\\s?화면)",
+    "수익\\s?인증",
+    "이게\\s?\\S*\\s?(화면|결과|수익)"
+   ],
+   "name_ko": "증거부터",
+   "shape_ko": "결과물을 먼저 보여주고 설명은 나중에.",
+   "example_ko": "이게 분석 화면이에요. 이 영상 하나가 채널 시청 시간의 40%예요. 이유는요.",
+   "fails_when_ko": "진짜 화면이 필요하다. 말로만 하는 증거는 증거가 아니다."
+  },
+  {
+   "id": "the-insider",
+   "name": "The Insider",
+   "shape": "Information from inside a system.",
+   "example": "YouTube tells you which videos are underperforming. Almost nobody opens the report.",
+   "fails_when": "Do not claim insider access you do not have.",
+   "match": [
+    "\\b(nobody|almost nobody|most people) (knows?|opens?|uses?)\\b",
+    "\\bhidden\\b",
+    "\\bburied\\b",
+    "(아무도|거의\\s?아무도|대부분|99%)(는|가|의)?\\s?(모르|안\\s?(열|써|봐))",
+    "(숨은|숨겨진|몰래|숨어)",
+    "(아는\\s?사람|아무도)\\s?(만|없)"
+   ],
+   "name_ko": "아무도 모르는 것",
+   "shape_ko": "시스템 안쪽 정보.",
+   "example_ko": "유튜브가 성적 안 좋은 영상을 알려주는 보고서가 있어요. 거의 아무도 안 열어봐요.",
+   "fails_when_ko": "없는 내부 정보를 아는 척하지 않는다."
+  },
+  {
+   "id": "the-impossible",
+   "name": "The Impossible Claim",
+   "shape": "State something that sounds untrue, then prove it.",
+   "example": "You can write, title, thumbnail and schedule a week of videos without opening a single editor.",
+   "fails_when": "The proof has to start within 20 seconds or it reads as clickbait.",
+   "match": [
+    "\\bwithout\\b",
+    "\\bnever\\b",
+    "\\bin one\\b",
+    "\\bzero\\b",
+    "(없이|안\\s?열고|안\\s?하고)",
+    "(한\\s?번도|절대)\\s?안",
+    "(한\\s?번에|원\\s?클릭|딸깍)",
+    "(0원|공짜|무료로)"
+   ],
+   "name_ko": "말이 안 되는 주장",
+   "shape_ko": "믿기 힘든 말을 하고, 바로 증명한다.",
+   "example_ko": "편집 프로그램 한 번 안 열고 일주일 치 영상을 대본, 제목, 썸네일, 일정까지 끝낼 수 있어요.",
+   "fails_when_ko": "20초 안에 증명이 시작되지 않으면 낚시처럼 보인다."
+  },
+  {
+   "id": "the-comparison",
+   "name": "The Comparison",
+   "shape": "Two named options, one winner.",
+   "example": "I wrote the same video three ways. One of them held 62% and the other two did not.",
+   "fails_when": "Say the losing option out loud. A comparison with no loser is an advert.",
+   "match": [
+    "\\bvs\\.?\\b",
+    "\\bversus\\b",
+    "\\bwhich (one )?(is|wins)\\b",
+    "\\bsame .* (three|two) ways\\b",
+    "(vs|VS|대)\\s",
+    "(어느\\s?쪽|뭐가\\s?(더|이)|누가\\s?이)",
+    "(세|두)\\s?가지로\\s?(만들|해)"
+   ],
+   "name_ko": "비교",
+   "shape_ko": "이름 있는 두 선택지, 승자 하나.",
+   "example_ko": "같은 영상을 세 가지로 만들었어요. 하나만 62%를 지켰어요.",
+   "fails_when_ko": "진 쪽을 꼭 말한다. 진 쪽이 없는 비교는 광고다."
+  },
+  {
+   "id": "the-origin",
+   "name": "The Origin",
+   "shape": "Where a result actually came from.",
+   "example": "Every video on this channel starts in the same 12-line file. Here it is.",
+   "fails_when": "Works once per channel. It is a reveal about you, and you only have one.",
+   "match": [
+    "\\bevery (video|post) .* starts\\b",
+    "\\bit all (starts|started)\\b",
+    "\\bthe (real )?reason\\b",
+    "(전부|모든\\s?영상).*(시작|나와)",
+    "(진짜|실제)\\s?(이유|비결)",
+    "(여기서|이걸로)\\s?시작"
+   ],
+   "name_ko": "출발점",
+   "shape_ko": "결과가 실제로 어디서 나왔는지.",
+   "example_ko": "이 채널 영상은 전부 같은 12줄짜리 파일에서 시작해요. 그 파일이에요.",
+   "fails_when_ko": "채널마다 한 번만 통한다. 나에 대한 공개라 한 번뿐이다."
+  },
+  {
+   "id": "the-deadline",
+   "name": "The Deadline",
+   "shape": "Something is changing on a date.",
+   "example": "The old description format stops mattering this month. Here is what replaces it.",
+   "fails_when": "Only use with a real, checkable date. This is the fastest formula to lose trust with.",
+   "match": [
+    "\\b(this|next) (week|month|year)\\b",
+    "\\bis changing\\b",
+    "\\bno longer\\b",
+    "\\bas of\\b",
+    "(이번|다음)\\s?(주|달|해)(부터)?",
+    "(바뀌|바뀐|달라졌|막혔)",
+    "(이제|더\\s?이상)\\s?(안|못)",
+    "\\d+월\\s?\\d+일"
+   ],
+   "name_ko": "마감",
+   "shape_ko": "특정 날짜에 뭔가 바뀐다.",
+   "example_ko": "예전 설명란 방식은 이번 달부터 의미 없어요. 바뀐 방식은 이거예요.",
+   "fails_when_ko": "확인 가능한 진짜 날짜일 때만 쓴다. 신뢰를 가장 빨리 잃는 공식이다."
+  },
+  {
+   "id": "the-direct-address",
+   "name": "The Direct Address",
+   "shape": "Name the exact viewer in the first six words.",
+   "example": "If you have under a thousand subscribers, this is the only video you need this week.",
+   "fails_when": "Narrow beats broad. 'If you make videos' addresses nobody.",
+   "match": [
+    "^if you\\b",
+    "\\bfor (anyone|everyone|people) who\\b",
+    "\\byou specifically\\b",
+    "^\\S*\\s?(하시는|이신|계신|없는|안\\s?되는)\\s?분",
+    "(분들|분이라면|분은|분만)",
+    "^(사장님|초보|직장인|퇴사)",
+    "(되시는|하시는|이신|계신|없으신|있으신)\\s?분"
+   ],
+   "name_ko": "콕 집어 부르기",
+   "shape_ko": "첫 여섯 단어 안에 정확한 시청자를 부른다.",
+   "example_ko": "구독자 천 명 안 되시는 분, 이번 주엔 이 영상 하나면 돼요.",
+   "fails_when_ko": "좁을수록 좋다. '영상 만드시는 분'은 아무도 안 부른 것과 같다."
+  }
+ ],
+ "note_ko": "유튜브 후킹 공식 21개 (한국판). 후킹은 첫 15초이고 세 가지 일을 한다: 제목이 약속한 클릭을 확인하고, 시청자가 닫을 수 없는 질문을 열고, 결과물이 있다는 걸 증명한다. 세 번째만 하는 후킹은 요약이라 이탈한다. match에는 영어 원본 패턴과 한국어 패턴이 함께 들어 있다.",
+ "rules_ko": [
+  "첫 문장에서 제목을 확인한다. 제목을 무시하는 후킹이 0:08 이탈의 원인이다.",
+  "아이디어는 하나. 약속 두 개를 담은 후킹은 둘 다 못 지킨다.",
+  "구체적인 게 큰 것을 이긴다. '7개월 만에 400명에서 20만'이 '엄청난 성장'보다 낫다.",
+  "결과물을 약속했다면 20초 안에 보여준다.",
+  "내가 누군지로 시작하지 않는다. 구독 부탁은 아직 이르다."
+ ]
+}
