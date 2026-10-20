@@ -1,41 +1,46 @@
 ---
 name: yt-retention
 description: >-
-  Read a YouTube Studio audience-retention export and find where viewers
-  actually leave, then say what to change. Use for "why do people stop
-  watching", "my retention is bad", a pasted retention chart or CSV, or "fix
-  my pacing".
+  유튜브 스튜디오에서 내려받은 시청 지속률 파일을 읽고, 시청자가 실제로 어디서
+  나가는지 찾은 다음 무엇을 바꿀지 말한다. 사용자가 "시청 지속률 분석해줘",
+  "어디서 이탈했어", "사람들이 어디서 나가", "왜 끝까지 안 봐", "지속률이 낮아",
+  "편집 템포 고쳐줘"라고 하거나, 시청 지속률 그래프나 CSV를 붙여넣었을 때 사용한다.
+  Also use for "why do people stop watching", "my retention is bad", "fix my pacing".
 ---
 
 # yt-retention
 
-The retention graph is the only honest feedback YouTube gives you. Almost nobody exports it.
+모든 결과물은 한국어로 쓴다. 한국 유튜브 시청자 기준으로 쓰고, 영어 예시는 한국 상황으로 바꾼다.
+
+시청 지속률 그래프는 유튜브가 주는 유일하게 솔직한 피드백이다. 그런데 이걸 내려받는 사람은
+거의 없다.
 
 ```bash
 python3 retention.py retention.csv --duration 600
 python3 retention.py retention.csv --transcript transcript.srt
 ```
 
-Getting the file: Studio -> a video -> Analytics -> Engagement -> the audience-retention chart ->
-the download icon -> "Audience retention".
+파일 받는 법: 스튜디오 -> 영상 선택 -> 분석 -> 참여도 -> 시청 지속률 차트 -> 다운로드 아이콘 ->
+"시청 지속률".
 
-## Three different problems
+## 서로 다른 세 가지 문제
 
-- **HOOK LEAK** - what is lost in the first 30 seconds. Under 25% is healthy. This is always the
-  first thing to fix and it is always the first fifteen seconds of script, never the edit.
-- **CLIFFS** - single steep drops. A cliff is a moment: a topic change with no signposting, a
-  sponsor read, a long setup. With `--transcript` the tool prints what was being said there, which
-  is what makes the report actionable instead of interesting.
-- **SLIDE** - the steady bleed across the middle. A flat slide is pacing. The fix is cutting, not
-  rewriting.
+- **후킹 누수(HOOK LEAK)** - 첫 30초 안에 빠져나가는 비율. 25% 미만이면 건강하다. 언제나 가장
+  먼저 고칠 부분이고, 원인은 언제나 대본의 첫 15초다. 편집이 아니다.
+- **절벽(CLIFFS)** - 한 번에 가파르게 떨어지는 지점. 절벽은 특정한 순간이다. 예고 없이 주제가
+  바뀌는 곳, 광고 멘트, 길게 늘어지는 도입부. `--transcript`를 주면 도구가 그 지점에서 무슨 말을
+  하고 있었는지 출력한다. 그래야 보고서가 흥미로운 이야기에 그치지 않고 바로 고칠 수 있는
+  내용이 된다.
+- **완만한 하락(SLIDE)** - 중간 구간 내내 꾸준히 빠지는 것. 평평하게 흘러내리는 하락은 템포
+  문제다. 고치는 방법은 다시 쓰는 게 아니라 잘라 내는 것이다.
 
-## What to hand back
+## 돌려줄 것
 
-Name the single biggest leak and one change for it. Not a list of five. Then, only if asked, the
-rest. And if the hook leak is healthy and the slide is flat, say the video is fine and the problem
-is packaging - send them to `/yt-package`.
+가장 큰 누수 하나를 짚고, 그걸 위한 변경 하나를 말한다. 다섯 개짜리 목록이 아니다. 나머지는
+사용자가 물어볼 때만. 그리고 후킹 누수가 건강하고 하락도 완만하다면, 영상은 괜찮고 문제는
+패키징이라고 말한다. `/yt-package`로 보낸다.
 
-## The gate
+## 마지막 관문
 
-Nothing here publishes. This skill writes and you publish. Every output ends in a block the user
-copies, and the last line of every run is the question: **ship it, or change it?**
+여기서는 아무것도 게시되지 않는다. 이 스킬은 쓰기만 하고, 게시는 사용자가 한다. 모든 결과물은
+사용자가 복사할 수 있는 블록으로 끝나고, 매번 마지막 줄은 이 질문이다: **이대로 올릴까요, 고칠까요?**

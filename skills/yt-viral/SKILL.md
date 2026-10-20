@@ -1,45 +1,51 @@
 ---
 name: yt-viral
 description: >-
-  Find what is actually working in the user's niche on YouTube and rank it
-  by how far each video beat its own channel, then name the formula. Use for
-  "what's working right now", "find viral videos in my niche", "why did this
+  사용자 분야에서 유튜브에서 실제로 잘되는 영상을 찾고, 각 영상이 자기 채널 평소
+  성적을 얼마나 넘었는지로 순위를 매긴 다음 그 공식을 짚는다. 사용자가 "요즘 뭐가
+  터져", "떡상한 영상 분석해줘", "경쟁 채널 분석해줘", "내 분야에서 잘되는 영상
+  찾아줘", "이 영상 왜 떴어", "벤치마킹할 영상 모아줘"라고 할 때 사용한다. Also use
+  for "what's working right now", "find viral videos in my niche", "why did this
   blow up", competitor research, or a swipe file.
 ---
 
 # yt-viral
 
-Raw view counts rank channel size, not ideas. This ranks by **multiple over each channel's own
-median**, which is the only version of the question that is about the video.
+모든 결과물은 한국어로 쓴다. 한국 유튜브 시청자 기준으로 쓰고, 영어 예시는 한국 상황으로 바꾼다.
+
+조회수 그대로 순위를 매기면 아이디어가 아니라 채널 크기 순위가 된다. 이 스킬은 **각 채널 자체
+중앙값 대비 몇 배인지**로 순위를 매긴다. 질문을 영상에 대한 것으로 만드는 방법은 이것뿐이다.
 
 ```bash
 python3 swipe.py collected.json --min 2.0
 ```
 
-## Collecting the input
+## 입력 모으기
 
-You need at least **four videos per channel** or a median means nothing, and the tool will skip the
-channel and tell you it did. Collect them however the user prefers - `yt-dlp --flat-playlist -J`
-against a channel URL is the fastest, the public page works, a manual list works.
+채널마다 **영상이 최소 네 개**는 있어야 한다. 그보다 적으면 중앙값이 의미가 없고, 도구는 그
+채널을 건너뛰고 건너뛰었다고 알려 준다. 모으는 방법은 사용자가 편한 대로 한다. 채널 URL에
+`yt-dlp --flat-playlist -J`를 돌리는 게 가장 빠르고, 공개 채널 페이지도 되고, 직접 만든 목록도
+된다. 한국 채널도 같은 방식으로 모으면 된다.
+
+클로드 앱(웹·모바일)에서는 yt-dlp를 못 쓸 수 있으니, 사용자에게 채널별 영상 목록(채널명·제목·조회수)을 복사해 붙여넣어 달라고 하면 된다.
 
 ```json
 [{"channel":"...","title":"...","views":412000,"url":"...","duration":613}]
 ```
 
-**Read, do not scrape.** Public listings only, never a logged-in session, never the user's own
-account credentials.
+**읽기만 하고, 긁어 가지 않는다.** 공개된 목록만 읽고, 로그인하거나 계정 정보를 쓰지 않는다.
+사용자 본인 계정으로 로그인한 세션이나 로그인 정보는 절대 쓰지 않는다.
 
-## Reading the output
+## 결과 읽기
 
-The multiple is the signal. The formula line is a judgement about the TITLE, matched against
-[the 21 formulas](../yt-script/hooks.json) - it is not a claim about why the video worked, and you
-should say so when you present it.
+배수가 신호다. 공식 줄은 제목에 대한 판단으로, [21가지 공식](../yt-script/hooks.json)과 맞춰 본
+것이다. 영상이 왜 잘됐는지에 대한 주장이 아니고, 결과를 보여 줄 때 그렇다고 말해야 한다.
 
-What to hand back: the top five with their multiples, the formula each used, and the ONE structural
-thing they share. Then the harder line - which of those the user could actually make this week, in
-their voice, with what they have.
+돌려줄 것: 배수가 붙은 상위 다섯 개, 각각이 쓴 공식, 그리고 그 영상들이 공유하는 구조적 공통점
+하나. 그다음 더 어려운 한 줄. 그중 무엇을 사용자가 이번 주에, 자기 말투로, 지금 가진 것으로
+실제로 만들 수 있는지.
 
-## The gate
+## 마지막 관문
 
-Nothing here publishes. This skill writes and you publish. Every output ends in a block the user
-copies, and the last line of every run is the question: **ship it, or change it?**
+여기서는 아무것도 게시되지 않는다. 이 스킬은 쓰기만 하고, 게시는 사용자가 한다. 모든 결과물은
+사용자가 복사할 수 있는 블록으로 끝나고, 매번 마지막 줄은 이 질문이다: **이대로 올릴까요, 고칠까요?**

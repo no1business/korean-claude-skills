@@ -1,36 +1,40 @@
 ---
 name: yt-shorts
 description: >-
-  Find the Shorts hiding inside a long video and write them, using the
-  transcript to pick self-contained moments. Use for "cut this into shorts",
-  "clip this", "repurpose this video", "what should I clip".
+  긴 영상 속에 숨어 있는 쇼츠를 찾아서 쓴다. 자막(스크립트)을 읽고 그것만 따로
+  떼어도 말이 되는 순간을 고른다. 사용자가 "긴 영상에서 쇼츠 뽑아줘", "쇼츠로
+  자를 부분 찾아줘", "이 영상 쇼츠로 잘라줘", "클립 따줘", "이 영상 재활용하고
+  싶어"라고 할 때 사용한다. Also use for "cut this into shorts", "clip this",
+  "repurpose this video", "what should I clip".
 ---
 
 # yt-shorts
 
-A Short cut out of a long video is not a clip of the best moment. It is a moment that **survives
-without the video around it**, which is a much smaller set.
+모든 결과물은 한국어로 쓴다. 한국 유튜브 시청자 기준으로 쓰고, 영어 예시는 한국 상황으로 바꾼다.
 
-## Picking
+긴 영상에서 잘라 낸 쇼츠는 가장 좋은 순간을 딴 클립이 아니다. **앞뒤 영상 없이도 살아남는
+순간**이고, 그런 순간은 훨씬 적다.
 
-Read the transcript and find spans of 20-55 seconds where all three are true:
+## 고르기
 
-1. It opens on a complete thought. If the first sentence needs the previous minute, it is not a Short.
-2. There is a turn in it - a claim, then something that complicates or proves it.
-3. It ends on a line, not a trail-off.
+자막을 읽고 20-55초 길이 구간 가운데 아래 세 가지가 모두 맞는 곳을 찾는다.
 
-Rank the candidates and show the user the top five with their timecodes and first line, so they can
-reject one without reading the whole transcript.
+1. 완결된 생각으로 시작한다. 첫 문장을 이해하는 데 앞의 1분이 필요하면 쇼츠가 아니다.
+2. 안에 반전이 있다. 주장이 나오고, 그걸 꼬거나 증명하는 무언가가 이어진다.
+3. 흐지부지 끝나지 않고 한 문장으로 딱 끝난다.
 
-## Writing each one
+후보에 순위를 매기고 상위 다섯 개를 타임코드, 첫 문장과 함께 사용자에게 보여 준다. 그래야
+자막 전체를 읽지 않고도 하나를 뺄 수 있다.
 
-- **A NEW first line.** The long video's line assumes context this viewer does not have. Write the
-  replacement and run it through `../yt-script/hookscore.py`.
-- **On-screen text for the first two seconds**, different words from the spoken line.
-- **A loop point**: what the last line sets up so the first line answers it.
-- Vertical framing note - what gets cropped out of a 16:9 frame and whether that matters.
+## 하나씩 쓰기
 
-## The gate
+- **새 첫 문장.** 긴 영상의 첫 문장은 이 시청자에게 없는 맥락을 전제한다. 대신할 문장을 쓰고
+  `../yt-script/hookscore.py`에 돌린다.
+- **첫 2초 화면 자막.** 말로 하는 문장과는 다른 단어로.
+- **루프 지점.** 마지막 문장이 무엇을 깔아 두면 첫 문장이 그 답이 되는지.
+- 세로 화면 메모. 16:9 화면에서 무엇이 잘려 나가는지, 그게 중요한지.
 
-Nothing here publishes. This skill writes and you publish. Every output ends in a block the user
-copies, and the last line of every run is the question: **ship it, or change it?**
+## 마지막 관문
+
+여기서는 아무것도 게시되지 않는다. 이 스킬은 쓰기만 하고, 게시는 사용자가 한다. 모든 결과물은
+사용자가 복사할 수 있는 블록으로 끝나고, 매번 마지막 줄은 이 질문이다: **이대로 올릴까요, 고칠까요?**

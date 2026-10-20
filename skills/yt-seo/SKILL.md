@@ -1,47 +1,51 @@
 ---
 name: yt-seo
 description: >-
-  Write the description, tags and search-facing text for a YouTube video,
-  aimed at the query a real person types. Use for "write my description",
-  "tags", "SEO", "help this video get found", "nobody is finding this".
+  유튜브 영상의 설명란, 태그, 검색에 노출되는 문구를 실제 사람이 검색창에 치는
+  검색어에 맞춰 쓴다. 사용자가 "설명란 써줘", "태그 추천해줘", "검색에 걸리게
+  해줘", "유튜브 SEO", "검색 노출", "아무도 이 영상을 못 찾아"라고 할 때 사용한다.
+  Also use for "write my description", "tags", "SEO", "help this video get found",
+  "nobody is finding this".
 ---
 
 # yt-seo
 
-Search is a smaller lever than packaging and a bigger one than people think for evergreen videos.
-For a video aimed at the subscriber feed, say so and spend the effort on `/yt-package` instead.
+모든 결과물은 한국어로 쓴다. 한국 유튜브 시청자 기준으로 쓰고, 영어 예시는 한국 상황으로 바꾼다.
 
-## Before you write
+검색은 패키징보다 작은 지렛대지만, 오래 검색되는 정보성 영상에서는 사람들이 생각하는 것보다
+크다. 구독자 피드를 노리는 영상이라면 그렇다고 말하고, 그 노력을 `/yt-package`에 쓴다.
 
-1. Read `~/.claude/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
-   on camera, the words they never use, who they are talking to, what they will not claim. If it
-   does not exist, ask for **three of their own videos**, read or transcribe them, infer the voice,
-   and write the file. A script in the wrong voice is worse than no script, because they have to
-   read it out loud.
-2. Never invent a number, a result or a source. If a figure would strengthen it and you do not have
-   one, ask for it or write the line without it.
+## 쓰기 전에
 
-## The description
+1. `~/.claude/youtube/voice.md`가 있으면 읽는다. 사용자의 말투 프로필이다. 카메라 앞에서 어떻게
+   말하는지, 절대 안 쓰는 말, 누구에게 말하는지, 무엇은 주장하지 않는지가 들어 있다. 파일이
+   없으면 **사용자 본인의 영상 세 개**를 달라고 한다. 읽거나 받아 적어서 말투를 파악하고 파일을
+   쓴다. 말투가 틀린 대본은 대본이 없는 것보다 나쁘다. 사용자가 그걸 소리 내어 읽어야 하기
+   때문이다.
+2. 숫자, 성과, 출처를 절대 지어내지 않는다. 숫자가 있으면 더 좋아질 문장인데 숫자가 없으면,
+   사용자에게 물어보거나 숫자 없이 쓴다.
 
-- **The first two lines are the only ones anyone reads.** They show above "...more" and they are
-  the search snippet. Say what the video gives them, in the words they would have typed.
-- Then the link or the resource, if there is one, so it is above the fold.
-- Then chapters (`/yt-chapters` writes them).
-- Then the long version: what is covered, who it is for, what it assumes.
+## 설명란
 
-## Tags, honestly
+- **첫 두 줄만 사람들이 읽는다.** "...더보기" 위에 보이는 부분이고, 검색 결과에 뜨는 미리보기도
+  이 두 줄이다. 이 영상이 무엇을 주는지, 시청자가 검색창에 쳤을 바로 그 말로 쓴다.
+- 그다음 링크나 자료가 있으면 넣는다. 접히기 전에 보이도록.
+- 그다음 챕터(`/yt-chapters`가 써 준다).
+- 그다음 긴 설명. 무엇을 다루는지, 누구를 위한 영상인지, 무엇을 안다고 가정하는지.
 
-Tags are a weak signal and YouTube has said so. Use them for disambiguation - spellings, the tool
-names, the abbreviations people actually type - and stop. Fifteen is plenty. A wall of tags is not
-a strategy and stuffing unrelated ones is against the terms.
+## 태그, 솔직하게
 
-## The query test
+태그는 약한 신호이고, 유튜브도 그렇다고 밝혔다. 헷갈리지 않게 구분하는 용도로만 쓴다. 표기
+차이(예: "챗GPT"와 "챗지피티"), 도구 이름, 사람들이 실제로 치는 줄임말까지. 거기서 멈춘다.
+열다섯 개면 충분하다. 태그를 잔뜩 붙이는 건 전략이 아니고, 관련 없는 태그를 채워 넣는 건
+약관 위반이다.
 
-Before handing anything over, write the three search queries this video should win, and check the
-title and first two description lines contain the words in those queries. If they do not, the
-problem is the title, not the description.
+## 검색어 테스트
 
-## The gate
+넘기기 전에 이 영상이 이겨야 할 검색어 세 개를 쓰고, 제목과 설명란 첫 두 줄에 그 검색어의
+단어가 들어 있는지 확인한다. 들어 있지 않다면 문제는 설명란이 아니라 제목이다.
 
-Nothing here publishes. This skill writes and you publish. Every output ends in a block the user
-copies, and the last line of every run is the question: **ship it, or change it?**
+## 마지막 관문
+
+여기서는 아무것도 게시되지 않는다. 이 스킬은 쓰기만 하고, 게시는 사용자가 한다. 모든 결과물은
+사용자가 복사할 수 있는 블록으로 끝나고, 매번 마지막 줄은 이 질문이다: **이대로 올릴까요, 고칠까요?**
