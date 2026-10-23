@@ -15,6 +15,12 @@
 | 4 | humanizer — AI 티 나는 글 다듬기 | "AI 티 안 나게 고쳐줘" | [zip](zips/humanizer.zip) |
 | 5 | naver-blog-expert / kakao-channel-expert / instagram-expert | "네이버 블로그 키우고 싶어" | [네이버](zips/naver-blog-expert.zip) · [카카오](zips/kakao-channel-expert.zip) · [인스타](zips/instagram-expert.zip) |
 
+## 방구석프로 자체 제작
+
+| 스킬 | 이렇게 말하면 켜져요 | 받기 |
+|---|---|---|
+| blog-photo-writer — 사진 10장 + 메모 2줄로 블로그 글 (사진 분류·배치·내 말투·제목·해시태그) | 사진 올리고 "블로그 글 써줘" | [zip](zips/blog-photo-writer.zip) · [가이드](https://bangpro.ai.kr/guide/marketing-04) |
+
 ## 설치 (무료 플랜 가능)
 
 1. Claude **설정 → 기능**에서 **코드 실행 및 파일 생성**을 켭니다.
@@ -32,4 +38,5 @@ Claude Code: `skills/` 폴더의 원하는 스킬 폴더를 `~/.claude/skills/`�
 - campaign-plan — [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) (Apache 2.0, 설명·안내 문구 수정)
 - diagram-design — [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design) (MIT)
 - humanizer — [blader/humanizer](https://github.com/blader/humanizer) (MIT)
+- blog-photo-writer — 방구석프로 제작 (MIT)
 - naver/kakao/instagram expert — [jnMetaCode/agency-agents-ko](https://github.com/jnMetaCode/agency-agents-ko) (원본 [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents), MIT, 스킬 형식으로 변환)
