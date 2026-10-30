@@ -22,6 +22,7 @@
 | blog-photo-writer — 사진 10장 + 메모 2줄로 블로그 글 (사진 분류·배치·내 말투·제목·해시태그) | 사진 올리고 "블로그 글 써줘" | [zip](zips/blog-photo-writer.zip) · [가이드](https://bangpro.ai.kr/guide/marketing-04) |
 | roast-room-ko — AI 자문단 7명 원탁 회의 한국판 (원본 nateherkai/roast-room, MIT). PC 클로드 코드용 | `/roast-room 고민` | [zip](zips/roast-room-ko.zip) · [가이드](https://bangpro.ai.kr/guide/research-03) |
 | ai-sales-ko — AI 영업사원: 채용공고로 회사 찾기 → 회사별 제안 메일 → 네이버·지메일(무료)로 하루 상한 지켜 자동 발송 → 답장 분류·미팅 제안. PC 클로드 코드용 | "영업 메일 보내줘" | [zip](zips/ai-sales-ko.zip) · [가이드](https://bangpro.ai.kr/guide/marketing-05) |
+| receipt-ledger-ko — 영수증 사진 → 간편장부 엑셀(계정과목·월별 합계) → 카드 내역과 대조해 빠진 경비 찾기 | 영수증 올리고 "장부 만들어줘" | [zip](zips/receipt-ledger-ko.zip) · [가이드](https://bangpro.ai.kr/guide/ops-12) |
 
 ## 설치 (무료 플랜 가능)
 
@@ -42,5 +43,6 @@ Claude Code: `skills/` 폴더의 원하는 스킬 폴더를 `~/.claude/skills/`�
 - humanizer — [blader/humanizer](https://github.com/blader/humanizer) (MIT)
 - blog-photo-writer — 방구석프로 제작 (MIT)
 - ai-sales-ko — 방구석프로 제작 (MIT). 흐름 참고 [ethanplusai/harvey](https://github.com/ethanplusai/harvey) (MIT)
+- receipt-ledger-ko — 방구석프로 제작 (MIT)
 - roast-room-ko — [nateherkai/roast-room](https://github.com/nateherkai/roast-room) (MIT, AI Automation Society) 한국어판. 한글 글꼴 Pretendard (SIL OFL)
 - naver/kakao/instagram expert — [jnMetaCode/agency-agents-ko](https://github.com/jnMetaCode/agency-agents-ko) (원본 [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents), MIT, 스킬 형식으로 변환)
