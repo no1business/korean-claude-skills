@@ -23,6 +23,7 @@
 | roast-room-ko — AI 자문단 7명 원탁 회의 한국판 (원본 nateherkai/roast-room, MIT). PC 클로드 코드용 | `/roast-room 고민` | [zip](zips/roast-room-ko.zip) · [가이드](https://bangpro.ai.kr/guide/research-03) |
 | ai-sales-ko — AI 영업사원: 채용공고로 회사 찾기 → 회사별 제안 메일 → 네이버·지메일(무료)로 하루 상한 지켜 자동 발송 → 답장 분류·미팅 제안. PC 클로드 코드용 | "영업 메일 보내줘" | [zip](zips/ai-sales-ko.zip) · [가이드](https://bangpro.ai.kr/guide/marketing-05) |
 | receipt-ledger-ko — 영수증 사진 → 간편장부 엑셀(계정과목·월별 합계) → 카드 내역과 대조해 빠진 경비 찾기 | 영수증 올리고 "장부 만들어줘" | [zip](zips/receipt-ledger-ko.zip) · [가이드](https://bangpro.ai.kr/guide/ops-12) |
+| launch-check-ko — 바이브코딩 앱 출시 전 점검: 코드 속 비밀 키 · 개인정보처리방침 빠진 항목 · 다크패턴 의심 화면 | 프로젝트 zip 올리고 "출시 전에 점검해줘" | [zip](zips/launch-check-ko.zip) · [가이드](https://bangpro.ai.kr/guide/ops-13) |
 
 ## 설치 (무료 플랜 가능)
 
@@ -44,5 +45,6 @@ Claude Code: `skills/` 폴더의 원하는 스킬 폴더를 `~/.claude/skills/`�
 - blog-photo-writer — 방구석프로 제작 (MIT)
 - ai-sales-ko — 방구석프로 제작 (MIT). 흐름 참고 [ethanplusai/harvey](https://github.com/ethanplusai/harvey) (MIT)
 - receipt-ledger-ko — 방구석프로 제작 (MIT)
+- launch-check-ko — 방구석프로 제작 (MIT)
 - roast-room-ko — [nateherkai/roast-room](https://github.com/nateherkai/roast-room) (MIT, AI Automation Society) 한국어판. 한글 글꼴 Pretendard (SIL OFL)
 - naver/kakao/instagram expert — [jnMetaCode/agency-agents-ko](https://github.com/jnMetaCode/agency-agents-ko) (원본 [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents), MIT, 스킬 형식으로 변환)
