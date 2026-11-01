@@ -25,7 +25,9 @@
 | receipt-ledger-ko — 영수증 사진 → 간편장부 엑셀(계정과목·월별 합계) → 카드 내역과 대조해 빠진 경비 찾기 | 영수증 올리고 "장부 만들어줘" | [zip](zips/receipt-ledger-ko.zip) · [가이드](https://bangpro.ai.kr/guide/ops-12) |
 | launch-check-ko — 바이브코딩 앱 출시 전 점검: 코드 속 비밀 키 · 개인정보처리방침 빠진 항목 · 다크패턴 의심 화면 | 프로젝트 zip 올리고 "출시 전에 점검해줘" | [zip](zips/launch-check-ko.zip) · [가이드](https://bangpro.ai.kr/guide/ops-13) |
 
-## 설치 (무료 플랜 가능)
+## 설치 (Claude Pro 이상)
+
+스킬은 Claude Pro·Max·Team·Enterprise 플랜에서 쓸 수 있어요 (무료 플랜 불가).
 
 1. Claude **설정 → 기능**에서 **코드 실행 및 파일 생성**을 켭니다.
 2. 위 표에서 zip을 받습니다. 압축은 풀지 않습니다.
